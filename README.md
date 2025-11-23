@@ -1,3 +1,6 @@
+![medellin](https://github.com/user-attachments/assets/1e4a1323-b1f6-44a3-929e-d8a1676b6b56)
+
+
 # ia1-2bots-Weather_forecast_and_Air_pollution
 **Curso: Inteligencia Artificial I -2025-2 C1**<br>
 **Equipo: 2bots**<br>
