@@ -46,3 +46,95 @@ El conjunto de datos incluye variables meteorológicas (temperatura, humedad rel
 
 ### Desafíos asociados a los datos
 Los principales desafíos incluyen valores faltantes por interrupciones en sensores, desbalance de clases (pocos eventos de alta contaminación), y ruido en las mediciones debido a condiciones atmosféricas locales. Existen además diferencias temporales y espaciales entre estaciones meteorológicas y de calidad del aire, lo que puede afectar la correlación. La alta colinealidad entre contaminantes y variables meteorológicas exige técnicas de selección o reducción de dimensionalidad. Finalmente, el tamaño limitado del historial restringe la generalización temporal de los modelos, por lo que se requiere validación cruzada temporal.
+
+# PIPELINE
+<img width="1646" height="920" alt="image" src="https://github.com/user-attachments/assets/c430473b-6607-4202-9496-ecfb147e562b" />
+La pipeline integra procesos de aprendizaje supervisado y no supervisado para analizar datos de clima y contaminación (PM2.5). Abarca desde la adquisición de datos hasta la obtención de conclusiones finales. Se compone de los siguientes módulos:
+
+## **1. Obtención y Preparación de los Datos**
+
+El flujo inicia con la recolección de datos de clima y contaminación ambiental, seguida por:
+
+Limpieza y control de calidad: corrección o eliminación de valores faltantes y anomalías.
+
+Análisis exploratorio (EDA): estudio estadístico e identificación de relaciones básicas.
+
+Preprocesamiento y escalado: normalización y transformación de variables para uso en modelos.
+
+Esta etapa alimenta tanto el enfoque supervisado como el no supervisado.
+
+## **2. Aprendizaje Supervisado**
+El enfoque supervisado se divide en dos grandes partes:
+
+### **2.1 Predicción de Temperatura**
+
+Se prueban varios modelos de regresión:
+
+Regresión Lineal
+
+Random Forest Regressor
+
+Decision Tree Regressor
+
+SVR
+
+Deep Learning Regressor (mejor modelo)
+
+El mejor modelo predice la Temperatura, que luego es utilizada como feature adicional en la siguiente etapa.
+
+### **2.2 Predicción de PM2.5**
+
+Con la temperatura predicha como variable de entrada, se entrenan nuevamente cinco modelos:
+
+Regresión Lineal
+
+Random Forest Regressor
+
+Decision Tree Regressor
+
+SVR
+
+Deep Learning Regressor
+
+Al final se evalúan mediante métricas de regresión como R², RMSE y MAE.
+
+Una vez evaluados los modelos, se establecen conclusiones del enfoque supervisado.
+
+## **3. Aprendizaje No Supervisado**
+
+Se aplican técnicas de clustering usando variables de Temperatura, PM2.5 y el índice AQI.
+
+El proceso se bifurca en dos análisis paralelos:
+
+### **3.1 Clustering basado en Temperatura**
+
+Métodos aplicados:
+
+K-Means (k por método del codo)
+
+DBSCAN (eps y min_samples óptimos)
+
+Clustering aglomerativo (con dendrograma)
+
+Los resultados se visualizan mediante PCA o t-SNE.
+
+### **3.2 Clustering basado en PM2.5 / AQI**
+Métodos aplicados:
+
+K-Means
+
+DBSCAN
+
+Clustering aglomerativo
+
+También se visualizan con técnicas de reducción de dimensionalidad.
+
+### **3.3 Evaluación**
+
+Se utilizan métricas de coherencia como:
+
+Silhouette score
+
+Evaluación visual de clusters
+
+A partir de ello se extraen patrones y conclusiones sobre el comportamiento de la contaminación y la temperatura.
