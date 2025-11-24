@@ -9,6 +9,9 @@
      <li>Rafael Andres Pinilla Vargas 2221929 </li>
  </ul>
 
+### Link al Video
+https://youtu.be/JO3SWr5uHGA
+
 # Descripción de los datos
 
 Dataset: APIS sobre el clima y contaminación del aire Openmeteo
